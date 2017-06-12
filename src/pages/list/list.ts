@@ -9,7 +9,7 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'list.html'
 })
 export class ListPage {
-  url: string = 'https://busticog.org/wp-json/wp/v2/posts?categories=34&per_page=100&_embed';
+  url: string = 'https://busticog.org/wp-json/wp/v2/posts?categories=34&per_page=10&_embed';
   items: any;
 
   constructor( private http: Http,  private nav: NavController) {

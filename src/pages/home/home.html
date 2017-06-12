@@ -8,22 +8,44 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
+  <ion-card class="posts-pinned" ion-item *ngFor="let item of itemsPin" (click)="itemTapped($event, item)">
 
-    <ion-card-header>
-      <ion-avatar item-left>
-        <h2>test</h2>
-        <img src="https://www.busticog.org/wp-content/uploads/2016/05/study-862994_1280.jpg">
-      </ion-avatar>
-
+    <ion-card-header class="home-header">
+      <ion-item style="padding: 0px;">
+        <ion-avatar  item-left>
+          <img id="home-thumb" class="thumb" *ngIf="item.featured_image_urls && item.featured_image_urls.medium" [src]="item.featured_image_urls.medium">
+        </ion-avatar>
+        <h2 class="homeTitle"  [innerHTML]="item.title.rendered"></h2>
+      </ion-item>
     </ion-card-header>
     <hr>
     <ion-card-content>
+      <p class="exc" [innerHTML]="item.excerpt.rendered"></p>
+    </ion-card-content>
 
-      Thanks for using BCOG's new app! If you have questions, please contact support.
+  </ion-card>
+  <br>
+  <h2 class="sep"> {{news}} </h2>
+  <br>
+  <ion-card class="posts" ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+
+    <ion-card-header class="home-header">
+      <ion-item style="padding: 0px;">
+        <ion-avatar  item-left>
+            <img id="home-thumb" class="thumb" *ngIf="item.featured_image_urls && item.featured_image_urls.medium" [src]="item.featured_image_urls.medium">
+          </ion-avatar>
+          <h2 class="homeTitle"  [innerHTML]="item.title.rendered"></h2>
+      </ion-item>
+    </ion-card-header>
+    <hr>
+    <ion-card-content>
+      <p class="exc" [innerHTML]="item.excerpt.rendered"></p>
     </ion-card-content>
 
   </ion-card>
 
 
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
