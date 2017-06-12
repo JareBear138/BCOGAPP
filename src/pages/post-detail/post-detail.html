@@ -1,0 +1,29 @@
+<!--
+  Generated template for the PostDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title [innerHTML]="selectedItem.title.rendered"></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-content padding>
+    <div *ngIf="selectedItem" class="selection">
+      <h2 [innerHTML]="selectedItem.title.rendered"></h2>
+      <div>
+        <p class="author" [innerHTML]="byTag + selectedItem._embedded.author[0].name" ></p>
+      </div>
+      <div [innerHTML]="selectedItem.content.rendered"></div>
+    </div>
+  </ion-content>
+
+
+</ion-content>
