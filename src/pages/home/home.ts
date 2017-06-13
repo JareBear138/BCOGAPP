@@ -8,6 +8,7 @@ import { LoadingController } from 'ionic-angular';
 
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Rx';
+import {NetworkDownPage} from "../network-down/network-down";
 
 @Component({
   selector: 'page-home',
@@ -40,7 +41,7 @@ export class HomePage {
    */
   ionViewDidLoad() {
     this.page = '1';
-    let loader = this.loading.create({content: 'Loading Front Page Posts...',});
+    let loader = this.loading.create({content: 'Loading Front Page Posts...', showBackdrop: false});
     loader.present().then(() => {
       let p = this.http.get(this.urlPinned).map(res => res.json());
       let i = this.http.get(this.url).map(res => res.json());
@@ -50,10 +51,21 @@ export class HomePage {
         this.news = "News";
         loader.dismiss();
         console.log(this.itemsPin);
+      }, error => {
+        setTimeout( () => {
+          loader.dismiss().then();
+          this.nav.push(NetworkDownPage);
+        }, 5000);
       });
     });
-        //this.items = data, loader.dismiss()
 
+    /**
+    setTimeout( () => {
+      loader.dismiss().then();
+      this.nav.push(NetworkDownPage);
+    }, 10000);
+        //this.items = data, loader.dismiss()
+    **/
   }
 
   /**
