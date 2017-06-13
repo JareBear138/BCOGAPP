@@ -10,13 +10,15 @@ import { PostDetailPage } from '../pages/post-detail/post-detail';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
+import {NetworkDownPage} from "../pages/network-down/network-down";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    PostDetailPage
+    PostDetailPage,
+    NetworkDownPage,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +31,7 @@ import { HttpModule } from '@angular/http';
     HomePage,
     ListPage,
     PostDetailPage,
+    NetworkDownPage,
   ],
   providers: [
     StatusBar,
