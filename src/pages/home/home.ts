@@ -122,6 +122,7 @@ export class HomePage {
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
     this.refreshLoad(refresher);
+    this.page = 1;
 
     setTimeout(() => {
       console.log('Async operation has ended');
