@@ -28,7 +28,7 @@ export class HomePage {
   }
   ionViewDidLoad() {
     this.page = '1';
-    let loader = this.loading.create({content: 'Getting latest entries...',});
+    let loader = this.loading.create({content: 'Loading Front Page Posts...',});
     loader.present().then(() => {
       let p = this.http.get(this.urlPinned).map(res => res.json());
       let i = this.http.get(this.url).map(res => res.json());
