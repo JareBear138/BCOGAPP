@@ -13,12 +13,13 @@ import { NavController, NavParams } from 'ionic-angular';
 export class ListPage {
   url: string = 'https://busticog.org/wp-json/wp/v2/posts?categories=34&per_page=10&_embed';
   items: any;
-  page: number = 1;
+  page: any;
 
   constructor( private http: Http,  private nav: NavController) {
 
   }
   ionViewDidLoad() {
+    this.page = 1;
     this.http.get( this.url )
       .map(res => res.json())
       .subscribe(data => {
