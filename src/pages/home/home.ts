@@ -39,13 +39,32 @@ export class HomePage {
         loader.dismiss();
         console.log(this.itemsPin);
       });
-
-
-
-
-
     });
-//this.items = data, loader.dismiss()
+        //this.items = data, loader.dismiss()
+
+  }
+  refreshLoad(refresher){
+    this.page = '1';
+      let p = this.http.get(this.urlPinned).map(res => res.json());
+      let i = this.http.get(this.url).map(res => res.json());
+      Observable.forkJoin([p, i]).subscribe(results => {
+        this.itemsPin = results[0];
+        this.items = results[1];
+        this.news = "News";
+        refresher.complete();
+        //console.log(this.itemsPin);
+      });
+
+
+  }
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.refreshLoad(refresher);
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
   }
   loadPosts( page ) {
 

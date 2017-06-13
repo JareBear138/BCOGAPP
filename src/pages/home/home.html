@@ -8,6 +8,9 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-card class="posts-pinned" ion-item *ngFor="let item of itemsPin" (click)="itemTapped($event, item)">
 
     <ion-card-header class="home-header">
