@@ -13,17 +13,23 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content >
 
-  <ion-content padding>
+
     <div *ngIf="selectedItem" class="selection">
-      <h2 [innerHTML]="selectedItem.title.rendered"></h2>
-      <div>
-        <p class="author" [innerHTML]="byTag + selectedItem._embedded.author[0].name" ></p>
+      <div class="main-container" >
+        <img id="mainImg"  *ngIf="selectedItem.featured_image_urls && selectedItem.featured_image_urls.medium"
+           [src]="selectedItem.featured_image_urls.medium">
+        <h2 class="post-title" [innerHTML]="selectedItem.title.rendered"></h2>
       </div>
-      <div [innerHTML]="selectedItem.content.rendered"></div>
+
+      <div class="aut">
+        <ion-icon class="block-aut" ios="ios-person" md="ios-person"></ion-icon>
+        <p class="block-aut" id="author" [innerHTML]="selectedItem._embedded.author[0].name" ></p>
+      </div>
+      <div class="artBody" [innerHTML]="selectedItem.content.rendered"></div>
     </div>
-  </ion-content>
+
 
 
 </ion-content>
