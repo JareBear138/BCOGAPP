@@ -3,15 +3,17 @@ page-home {
 }
 .posts{
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12) !important;
-  margin-bottom: 8px;
+  margin-bottom: 25px;
   word-wrap: break-word;
   border-bottom: 0px;
+  border-left: 7px solid #FF772A;
+
 
 }
 .exc{
   white-space: normal;
 }
-.block{
+.block-pin{
   display: inline-block;
   color: #56BE00 !important;
   padding-right: 5px;
@@ -49,4 +51,9 @@ hr.sep {
 }
 .pin-container{
   margin-left: 76px;
+}
+.block-news{
+  display: inline-block;
+  color: #FF772A !important;
+  padding-right: 5px;
 }
