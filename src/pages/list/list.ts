@@ -3,6 +3,9 @@ import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { PostDetailPage } from '../post-detail/post-detail';
 import { NavController, NavParams } from 'ionic-angular';
+import { LoadingController } from 'ionic-angular';
+
+import {NetworkDownPage} from "../network-down/network-down";
 
 
 
@@ -15,19 +18,71 @@ export class ListPage {
   items: any;
   page: any;
 
-  constructor( private http: Http,  private nav: NavController) {
+  constructor( private http: Http,  private nav: NavController, public loading: LoadingController) {
 
   }
   ionViewDidLoad() {
-    this.page = 1;
-    this.http.get( this.url )
+    let loader = this.loading.create({content: 'Loading Loading Blog Posts...', showBackdrop: false});
+    loader.present().then(() => {
+      this.page = 1;
+      this.http.get(this.url)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.items = data;
+          loader.dismiss();
+          //console.log(data);
+        }, error => {
+          setTimeout( () => {
+            loader.dismiss().then();
+            this.nav.push(NetworkDownPage);
+          }, 5000);
+      });
+    });
+  }
+
+  /**
+   * The refreshLoad() function is similar to the ionViewDidLoad() function
+   * but it excludes the ionic loader api as the this function is used in the
+   * pull to refresh handler ( doRefresh() ) which includes its own loading
+   * spinner making the ionic loader api interface redundant
+   *
+   * @param refresher
+   *
+   * @returns none
+   */
+  refreshLoad(refresher){
+    //this.page = '1';
+    setTimeout(500);
+    this.http.get(this.url)
       .map(res => res.json())
       .subscribe(data => {
-        // we've got back the raw data, now generate the core schedule data
-        // and save the data for later reference
         this.items = data;
-        console.log( data );
-      });
+        console.log("API CALL SUCCESS");
+        refresher.complete();
+    });
+      //console.log(this.itemsPin);
+  }
+
+  /**
+   * The doRefresh() function is the main refresh handler. refreshLoader() is
+   * called and the page updates. Notice that the refresher.complete() method
+   * is located in the refreshLoad() function, subsequently the refresher object
+   * must be passed into the refreshLoad() function.
+   *
+   * @params refresher
+   *
+   * @returns none
+   */
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.refreshLoad(refresher);
+    this.page = 1;
+    console.log("Refresh Success");
+
+    setTimeout(() => {
+      //console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
   }
 
   //TODO: Add in loading spinner
