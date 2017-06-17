@@ -10,7 +10,8 @@ import { PostDetailPage } from '../pages/post-detail/post-detail';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
-import {NetworkDownPage} from "../pages/network-down/network-down";
+import { NetworkDownPage } from "../pages/network-down/network-down";
+import { EventsPage } from "../pages/events/events";
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {NetworkDownPage} from "../pages/network-down/network-down";
     ListPage,
     PostDetailPage,
     NetworkDownPage,
+    EventsPage
   ],
   imports: [
     BrowserModule,
@@ -32,6 +34,7 @@ import {NetworkDownPage} from "../pages/network-down/network-down";
     ListPage,
     PostDetailPage,
     NetworkDownPage,
+    EventsPage
   ],
   providers: [
     StatusBar,

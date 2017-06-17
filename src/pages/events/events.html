@@ -5,14 +5,31 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>Events</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Upcoming Events</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
+
+    <ion-card class="event-posts" ion-item *ngFor="let item of items" >
+      <ion-card-header>
+        <h2 class="full" [innerHTML]="item.title"></h2>
+      </ion-card-header>
+      <hr />
+      <ion-card-content>
+        <p class="full" [innerHTML]="item.description"> </p>
+        <a class="calendar-link" href="{{item.link}}" >
+          <ion-icon class="block-event" name="md-calendar"></ion-icon>
+          <p class="block-event">VIEW EVENT</p>
+        </a>
+      </ion-card-content>
+
+    </ion-card>
+
 
 </ion-content>
