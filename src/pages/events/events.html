@@ -16,6 +16,10 @@
 
 <ion-content padding>
 
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
     <ion-card class="event-posts" ion-item *ngFor="let item of items" >
       <ion-card-header>
         <h2 class="full" [innerHTML]="item.title"></h2>

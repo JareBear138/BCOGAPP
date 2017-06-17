@@ -12,6 +12,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
 import { NetworkDownPage } from "../pages/network-down/network-down";
 import { EventsPage } from "../pages/events/events";
+import { NewsletterPage } from "../pages/newsletter/newsletter";
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { EventsPage } from "../pages/events/events";
     ListPage,
     PostDetailPage,
     NetworkDownPage,
-    EventsPage
+    EventsPage,
+    NewsletterPage,
+
   ],
   imports: [
     BrowserModule,
@@ -34,12 +38,14 @@ import { EventsPage } from "../pages/events/events";
     ListPage,
     PostDetailPage,
     NetworkDownPage,
-    EventsPage
+    EventsPage,
+    NewsletterPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    InAppBrowser
   ]
 })
 export class AppModule {}

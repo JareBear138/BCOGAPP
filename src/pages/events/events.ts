@@ -49,4 +49,49 @@ export class EventsPage {
     });
   }
 
+  /**
+   * The refreshLoad() function is similar to the ionViewDidLoad() function
+   * but it excludes the ionic loader api as the this function is used in the
+   * pull to refresh handler ( doRefresh() ) which includes its own loading
+   * spinner making the ionic loader api interface redundant
+   *
+   * @param refresher
+   *
+   * @returns none
+   */
+  refreshLoad(refresher){
+    this.http.get(this.url)
+      .map(res => res.json())
+      .subscribe(data => {
+        this.items = data['query']['results']['item'];
+        console.log("http complete");
+        refresher.complete();
+      }, error => {
+        setTimeout( () => {
+          this.nav.push(NetworkDownPage);
+        }, 5000);
+      });
+  }
+
+  /**
+   * The doRefresh() function is the main refresh handler. refreshLoader() is
+   * called and the page updates. Notice that the refresher.complete() method
+   * is located in the refreshLoad() function, subsequently the refresher object
+   * must be passed into the refreshLoad() function.
+   *
+   * @params refresher
+   *
+   * @returns none
+   */
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.refreshLoad(refresher);
+
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
 }

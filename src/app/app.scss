@@ -25,8 +25,9 @@
 .bar-button-menutoggle.bar-button-menutoggle-md{
   color: white;
 }
-
-
+.item-md.item-block .item-inner{
+  border-bottom: none !important;
+}
 // SASS style sheet */
 // Palette color codes */
 // Palette URL: http://paletton.com/#uid=c3q0l4H2A0k++++qKZWAF+V+VAFZWqK */
