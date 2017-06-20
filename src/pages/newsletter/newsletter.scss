@@ -1,0 +1,60 @@
+page-newsletter {
+
+}
+@import url('https://fonts.googleapis.com/css?family=Contrail+One');
+.overlay{
+  position: absolute;
+  top: 15px;
+}
+.buttonNews{
+  background-color: #007aff;
+  color: white;
+  text-align: center;
+}
+.subscribe{
+  margin-top: 40px !important;
+  font-family: 'Contrail One', cursive;
+
+}
+.subscribe > ion-card-header {
+  white-space: normal;
+  word-wrap: break-word;
+}
+.submit{
+  margin-top: 10px;
+  background-color: #007aff !important;
+}
+.input-email{
+  border-bottom: 1px solid lightgray;
+}
+.input-email:focus{
+
+}
+.input-email:valid{
+  border-bottom: 3px solid #56BE00 !important;
+}
+.item-inner {
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
+}
+.ng-valid[required]  {
+  border-bottom: 3px solid #42A948; /* green */
+}
+.negative{
+  background-color: lightcoral;
+  margin-top: 14px;
+}
+.negative > ion-card-content{
+  color: white;
+  text-align: center;
+  padding: 2px!important;
+}
+.positive{
+  background-color: #56BE00;
+  margin-top: 14px;
+}
+.positive > ion-card-content{
+  color: white;
+  text-align: center;
+  padding: 2px!important;
+}

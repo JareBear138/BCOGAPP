@@ -15,6 +15,8 @@ import { EventsPage } from "../pages/events/events";
 import { NewsletterPage } from "../pages/newsletter/newsletter";
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
+import { FormsModule }   from '@angular/forms';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -30,6 +32,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
+    FormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
