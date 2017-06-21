@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { EventsPage } from  '../pages/events/events';
 import { NewsletterPage } from '../pages/newsletter/newsletter';
+import { SermonPage } from '../pages/sermon/sermon';
 
 @Component({
   templateUrl: 'app.html'
@@ -26,7 +27,8 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'Blog Articles', component: ListPage },
       { title: 'Upcoming Events', component: EventsPage },
-      { title: 'Newsletter', component: NewsletterPage}
+      { title: 'Newsletter', component: NewsletterPage},
+      { title: 'Sermon Handout', component: SermonPage}
     ];
 
   }

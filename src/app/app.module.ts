@@ -16,6 +16,7 @@ import { NewsletterPage } from "../pages/newsletter/newsletter";
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { FormsModule }   from '@angular/forms';
+import {SermonPage} from "../pages/sermon/sermon";
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FormsModule }   from '@angular/forms';
     NetworkDownPage,
     EventsPage,
     NewsletterPage,
+    SermonPage
 
   ],
   imports: [
@@ -42,7 +44,8 @@ import { FormsModule }   from '@angular/forms';
     PostDetailPage,
     NetworkDownPage,
     EventsPage,
-    NewsletterPage
+    NewsletterPage,
+    SermonPage
   ],
   providers: [
     StatusBar,
