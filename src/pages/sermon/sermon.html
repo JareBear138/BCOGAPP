@@ -16,4 +16,32 @@
 
 <ion-content padding>
 
+  <ion-fab right bottom class="but">
+    <button ion-fab color="black" (click)="loadBrowser(this.browser);">
+      <ion-icon name="md-document"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <form (ngSubmit)="submitHandler()">
+  <ion-card *ngFor="let item of qArray; let i = index" [attr.data-index]="i" >
+
+    <ion-card-header class="x">
+      <h3>{{item}}</h3>
+    </ion-card-header>
+    <hr class="line">
+    <ion-card-content class="input-hand">
+      <ion-input type="text" placeholder="Your Answer" ></ion-input>
+    </ion-card-content>
+
+  </ion-card>
+    <ion-card class="last">
+      <ion-card-content class="input-hand">
+        <ion-input type="email" placeholder="Your Email"></ion-input>
+        <button class="submit" ion-button type="submit" block>Submit Answers</button>
+      </ion-card-content>
+
+
+    </ion-card>
+  </form>
+
 </ion-content>

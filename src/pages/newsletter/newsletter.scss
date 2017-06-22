@@ -30,16 +30,11 @@ page-newsletter {
 .input-email:focus{
 
 }
-.input-email:valid{
-  border-bottom: 3px solid #56BE00 !important;
-}
 .item-inner {
   border-bottom-color: transparent !important;
   box-shadow: none !important;
 }
-.ng-valid[required]  {
-  border-bottom: 3px solid #42A948; /* green */
-}
+
 .negative{
   background-color: lightcoral;
   margin-top: 14px;

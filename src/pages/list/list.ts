@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { PostDetailPage } from '../post-detail/post-detail';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 
 import {NetworkDownPage} from "../network-down/network-down";
@@ -88,9 +88,6 @@ export class ListPage {
   //TODO: Add in loading spinner
   loadPosts( page ) {
 
-    if( !page ) {
-      let page = '1';
-    }
     console.log(this.url + '&page=' + page);
     return new Promise(resolve => {
 
