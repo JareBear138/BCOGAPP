@@ -17,6 +17,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { FormsModule }   from '@angular/forms';
 import {SermonPage} from "../pages/sermon/sermon";
+import { AudioPage } from '../pages/audio/audio';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {SermonPage} from "../pages/sermon/sermon";
     NetworkDownPage,
     EventsPage,
     NewsletterPage,
-    SermonPage
+    SermonPage,
+    AudioPage,
 
   ],
   imports: [
@@ -45,7 +47,8 @@ import {SermonPage} from "../pages/sermon/sermon";
     NetworkDownPage,
     EventsPage,
     NewsletterPage,
-    SermonPage
+    SermonPage,
+    AudioPage,
   ],
   providers: [
     StatusBar,

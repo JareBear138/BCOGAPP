@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { EventsPage } from  '../pages/events/events';
 import { NewsletterPage } from '../pages/newsletter/newsletter';
 import { SermonPage } from '../pages/sermon/sermon';
+import { AudioPage } from '../pages/audio/audio';
 
 @Component({
   templateUrl: 'app.html'
@@ -28,7 +29,8 @@ export class MyApp {
       { title: 'Blog Articles', component: ListPage },
       { title: 'Upcoming Events', component: EventsPage },
       { title: 'Newsletter', component: NewsletterPage},
-      { title: 'Sermon Handout', component: SermonPage}
+      { title: 'Sermon Handout', component: SermonPage},
+      { title: 'Audio Sermons', component: AudioPage}
     ];
 
   }
