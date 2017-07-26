@@ -9,6 +9,11 @@ import { EventsPage } from  '../pages/events/events';
 import { NewsletterPage } from '../pages/newsletter/newsletter';
 import { SermonPage } from '../pages/sermon/sermon';
 import { AudioPage } from '../pages/audio/audio';
+import { ResponseCardsPage } from '../pages/response-cards/response-cards';
+import { UpdateContactPage } from '../pages/update-contact/update-contact';
+import { NextStepsPage } from '../pages/next-steps/next-steps';
+import { SignUpPage } from '../pages/sign-up/sign-up';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -30,7 +35,8 @@ export class MyApp {
       { title: 'Upcoming Events', component: EventsPage },
       { title: 'Newsletter', component: NewsletterPage},
       { title: 'Sermon Handout', component: SermonPage},
-      { title: 'Audio Sermons', component: AudioPage}
+      { title: 'Audio Sermons', component: AudioPage},
+      { title: 'Response Card', component: ResponseCardsPage}
     ];
 
   }

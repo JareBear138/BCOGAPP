@@ -18,7 +18,7 @@
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-card class="main-audio" ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+  <ion-card class="main-audio" ion-item *ngFor="let item of items" >
 
     <ion-card-header class="home-header">
       <ion-item style="padding: 0px;">

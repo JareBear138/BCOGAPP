@@ -18,6 +18,10 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { FormsModule }   from '@angular/forms';
 import {SermonPage} from "../pages/sermon/sermon";
 import { AudioPage } from '../pages/audio/audio';
+import { ResponseCardsPage } from '../pages/response-cards/response-cards';
+import { UpdateContactPage } from '../pages/update-contact/update-contact';
+import { NextStepsPage } from '../pages/next-steps/next-steps';
+import { SignUpPage } from '../pages/sign-up/sign-up';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,10 @@ import { AudioPage } from '../pages/audio/audio';
     NewsletterPage,
     SermonPage,
     AudioPage,
+    ResponseCardsPage,
+    UpdateContactPage,
+    NextStepsPage,
+    SignUpPage,
 
   ],
   imports: [
@@ -49,6 +57,10 @@ import { AudioPage } from '../pages/audio/audio';
     NewsletterPage,
     SermonPage,
     AudioPage,
+    ResponseCardsPage,
+    UpdateContactPage,
+    NextStepsPage,
+    SignUpPage,
   ],
   providers: [
     StatusBar,

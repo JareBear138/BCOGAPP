@@ -167,24 +167,30 @@ export class HomePage {
    * @returns none
    */
   loadMore(infiniteScroll) {
-
+    console.log("Hello");
     this.page++;
 
-    this.loadPosts( this.page ).then( items => {
-      // Loads posts from WordPress API
-      let length = items["length"];
+    setTimeout( () => {
+      console.log("test");
+      this.loadPosts(this.page).then(items => {
+        // Loads posts from WordPress API
+        let length = items["length"];
+        console.log("hello");
+        console.log(items);
+        if (length === 0) {
+          infiniteScroll.complete();
+          return;
+        }
 
-      if( length === 0 ) {
+        for (var i = length - 1; i >= 0; i--) {
+          this.items.push(items[i]);
+          infiniteScroll.complete();
+        }
+
         infiniteScroll.complete();
-        return;
-      }
+      });
 
-      for (var i = length - 1; i >= 0; i--) {
-        this.items.push( items[i] );
-      }
-
-      infiniteScroll.complete();
-    });
+    }, 200);
   }
 
 

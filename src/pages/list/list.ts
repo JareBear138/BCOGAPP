@@ -22,7 +22,7 @@ export class ListPage {
 
   }
   ionViewDidLoad() {
-    let loader = this.loading.create({content: 'Loading Loading Blog Posts...', showBackdrop: false});
+    let loader = this.loading.create({content: 'Loading Blog Posts...', showBackdrop: false});
     loader.present().then(() => {
       this.page = 1;
       this.http.get(this.url)
