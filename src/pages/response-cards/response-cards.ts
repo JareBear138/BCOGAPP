@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import {  NavController, NavParams } from 'ionic-angular';
+import {UpdateContactPage} from "../update-contact/update-contact";
+import {SignUpPage} from "../sign-up/sign-up";
+import {NextStepsPage} from "../next-steps/next-steps";
 
 /**
  * Generated class for the ResponseCardsPage page.
@@ -19,6 +22,15 @@ export class ResponseCardsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ResponseCardsPage');
+  }
+  contactTapped(){
+    this.navCtrl.push( UpdateContactPage );
+  }
+  eventsTapped(){
+    this.navCtrl.push( SignUpPage );
+  }
+  stepsTapped(){
+    this.navCtrl.push( NextStepsPage );
   }
 
 }

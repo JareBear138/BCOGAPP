@@ -7,7 +7,7 @@
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <ion-icon name="menu" style="color: white;"></ion-icon>
     </button>
     <ion-title >Sermon Handout</ion-title>
   </ion-navbar>
@@ -30,18 +30,29 @@
     </ion-card-header>
     <hr class="line">
     <ion-card-content class="input-hand">
-      <ion-input type="text" placeholder="Your Answer" ></ion-input>
+      <ion-input type="text" [(ngModel)]="valueArray[i]" name="{{q + i}}" placeholder="Your Answer" ></ion-input>
     </ion-card-content>
 
   </ion-card>
-    <ion-card class="last">
+    <ion-card *ngIf="emailFlag === true">
+      <ion-card-header class="headerReq">
+        <h3 style="color: white;">Additional Notes</h3>
+      </ion-card-header>
+      <ion-item>
+        <textarea  class="questionTA" [(ngModel)]="notes" name="comments" placeholder="Notes here..."></textarea>
+      </ion-item>
+
+    </ion-card>
+    <ion-card class="last" *ngIf="emailFlag === true">
       <ion-card-content class="input-hand">
-        <ion-input type="email" placeholder="Your Email"></ion-input>
-        <button class="submit" ion-button type="submit" block>Submit Answers</button>
+        <ion-input type="email" [(ngModel)]="email" name="email" placeholder="Your Email" ></ion-input>
+        <button class="submit" ion-button type="submit" block >Submit Answers</button>
       </ion-card-content>
 
 
     </ion-card>
+
+
   </form>
 
 </ion-content>

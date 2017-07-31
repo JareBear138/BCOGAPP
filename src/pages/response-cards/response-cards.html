@@ -15,10 +15,19 @@
 
 <ion-content >
 
-  <button  class="resp" ion-button full outline> <ion-icon class="ic" ios="ios-contacts" md="ios-contacts"></ion-icon>Update Contact Info</button>
+  <button  class="resp" ion-button full outline (click)="contactTapped()">
+    <ion-icon class="ic" ios="ios-contacts" md="ios-contacts"></ion-icon>
+    Update Contact Info
+  </button>
 
-  <button class="resp" ion-button full outline><ion-icon class="ic" ios="ios-clipboard" md="ios-clipboard"></ion-icon>Sign Up for an Event</button>
+  <button class="resp" ion-button full outline (click)="eventsTapped()">
+    <ion-icon class="ic" ios="ios-clipboard" md="ios-clipboard"></ion-icon>
+    Sign Up for an Event
+  </button>
 
-  <button class="resp" ion-button full outline><ion-icon class="ic" ios="ios-checkbox" md="ios-checkbox"></ion-icon> Your Next Steps</button>
+  <button class="resp" ion-button full outline (click)="stepsTapped()">
+    <ion-icon class="ic" ios="ios-checkbox" md="ios-checkbox"></ion-icon>
+    Your Next Steps
+  </button>
 
 </ion-content>
