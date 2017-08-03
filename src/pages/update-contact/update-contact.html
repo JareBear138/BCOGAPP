@@ -49,13 +49,10 @@
         Other Information
       </ion-card-header>
       <ion-item>
-        <ion-input style="width: 111px !important;" class="question2" readonly name="phone" placeholder="Tel. #"></ion-input>
-        <ion-input style="padding-right: 12px;" class="question" [(ngModel)]="phone" name="phone" placeholder="###-###-####" maxlength="13"></ion-input>
+        <ion-input style="width: 111px !important;" id="bottomQ" class="question2" readonly name="phone" placeholder="Tel. #"></ion-input>
+        <ion-input style="padding-right: 12px;" id="bottomQ" class="question" [(ngModel)]="phone" name="phone" placeholder="###-###-####" maxlength="13"></ion-input>
       </ion-item>
-      <ion-item>
-        <ion-input style="padding-top: 5px;"  type="text" readonly class="question2" id="bottomQ" placeholder="Birthday">Birthday</ion-input>
-        <ion-input style="color: lightgray ; width: 147px;" id="bottomQ" type="date" class="question" [(ngModel)]="dob" name="dob" placeholder="Birthday"></ion-input>
-      </ion-item>
+
     </ion-card>
 
     <ion-card>
@@ -72,8 +69,8 @@
         Attendance Type
       </ion-card-header>
       <ion-item>
-      <select class="attndSelect" name="select"> <!--Supplement an id here instead of using 'name'-->
-          <option  selected="selected" disabled>Select One (Click here)</option>
+      <select class="attndSelect" [(ngModel)]="attendanceType" name="select"> <!--Supplement an id here instead of using 'name'-->
+          <option  selected="selected" disabled value="N/A">Select One (Click here)</option>
           <option value="1st Time">1st Time</option>
           <option value="2nd Time">2nd Time</option>
           <option value="Regular Attender">Regular Attender</option>
