@@ -23,6 +23,8 @@ export class HomePage {
   itemsPin: any;
   urlPinned: string = 'https://busticog.org/wp-json/wp/v2/posts?categories=39&_embed';
   news: any;
+  eopFlag: boolean = false;
+  msg: any;
 
   constructor(private http: Http,  private nav: NavController, public loading: LoadingController) {
 
@@ -120,7 +122,7 @@ export class HomePage {
    * @returns none
    */
   doRefresh(refresher) {
-    console.log('Begin async operation', refresher);
+    this.eopFlag = false; //Make sure that EOP Msg doesn't show on refresh
     this.refreshLoad(refresher);
     this.page = 1;
 
@@ -139,17 +141,21 @@ export class HomePage {
    *
    * @returns {Promise<T>}
    */
-  loadPosts( page ) {
-    if( !page ) {
-      let page = '1';
-    }
+  loadPosts( page, infiniteScroll ) {
+
+    console.log(this.url + '&page=' + page);
     return new Promise(resolve => {
+
       this.http.get( this.url + '&page=' + page )
         .map(res => res.json())
         .subscribe(data => {
           // we've got back the raw data, now generate the core schedule data
           // and save the data for later reference
           resolve( data );
+        }, data => {
+          infiniteScroll.complete();
+          this.eopFlag = true;
+          return;
         });
 
     });
@@ -166,32 +172,28 @@ export class HomePage {
    *
    * @returns none
    */
+
   loadMore(infiniteScroll) {
-    console.log("Hello");
     this.page++;
 
-    setTimeout( () => {
-      console.log("test");
-      this.loadPosts(this.page).then(items => {
-        // Loads posts from WordPress API
-        let length = items["length"];
-        console.log("hello");
-        console.log(items);
-        if (length === 0) {
-          infiniteScroll.complete();
-          return;
-        }
+    this.loadPosts( this.page, infiniteScroll ).then( items => {
+      // Loads posts from WordPress API
+      let length = items["length"];
 
-        for (var i = length - 1; i >= 0; i--) {
-          this.items.push(items[i]);
-          infiniteScroll.complete();
-        }
-
+      if( length === 0 ) {
+        console.log("No More Posts");
         infiniteScroll.complete();
-      });
+        return;
+      }
 
-    }, 200);
+      for (var i = length - 1; i >= 0; i--) {
+        this.items.push( items[i] );
+      }
+
+      infiniteScroll.complete();
+    });
   }
+
 
 
 }

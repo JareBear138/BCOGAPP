@@ -17,6 +17,7 @@ export class ListPage {
   url: string = 'https://busticog.org/wp-json/wp/v2/posts?categories=34&per_page=10&_embed';
   items: any;
   page: any;
+  eopFlag: boolean = false;
 
   constructor( private http: Http,  private nav: NavController, public loading: LoadingController) {
 
@@ -74,9 +75,10 @@ export class ListPage {
    * @returns none
    */
   doRefresh(refresher) {
-    console.log('Begin async operation', refresher);
+    this.eopFlag = false; //Make sure that EOP Msg doesn't show on refresh
     this.refreshLoad(refresher);
     this.page = 1;
+    this.eopFlag = false;
     console.log("Refresh Success");
 
     setTimeout(() => {
@@ -86,7 +88,7 @@ export class ListPage {
   }
 
   //TODO: Add in loading spinner
-  loadPosts( page ) {
+  loadPosts( page, infiniteScroll ) {
 
     console.log(this.url + '&page=' + page);
     return new Promise(resolve => {
@@ -97,6 +99,10 @@ export class ListPage {
           // we've got back the raw data, now generate the core schedule data
           // and save the data for later reference
           resolve( data );
+        }, data => {
+          infiniteScroll.complete();
+          this.eopFlag = true;
+          return;
         });
 
     });
@@ -109,7 +115,7 @@ export class ListPage {
   loadMore(infiniteScroll) {
     this.page++;
 
-    this.loadPosts( this.page ).then( items => {
+    this.loadPosts( this.page, infiniteScroll ).then( items => {
       // Loads posts from WordPress API
       let length = items["length"];
 

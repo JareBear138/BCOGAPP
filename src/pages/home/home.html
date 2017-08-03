@@ -55,6 +55,10 @@
 
   </ion-card>
 
+  <div *ngIf="eopFlag === true">
+      <hr><h4 style="text-align: center; color: lightgray;"><i>No More Posts</i></h4><hr>
+  </div>
+
 
   <ion-infinite-scroll (ionInfinite)="loadMore($event)">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
