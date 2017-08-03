@@ -13,7 +13,7 @@ import { ResponseCardsPage } from '../pages/response-cards/response-cards';
 import { UpdateContactPage } from '../pages/update-contact/update-contact';
 import { NextStepsPage } from '../pages/next-steps/next-steps';
 import { SignUpPage } from '../pages/sign-up/sign-up';
-
+import { PrayerCornerPage } from '../pages/prayer-corner/prayer-corner';
 
 @Component({
   templateUrl: 'app.html'
@@ -36,7 +36,8 @@ export class MyApp {
       { title: 'Newsletter', component: NewsletterPage},
       { title: 'Sermon Handout', component: SermonPage},
       { title: 'Audio Sermons', component: AudioPage},
-      { title: 'Response Card', component: ResponseCardsPage}
+      { title: 'Response Card', component: ResponseCardsPage},
+      { title: 'Prayer Corner', component: PrayerCornerPage}
     ];
 
   }

@@ -22,6 +22,7 @@ import { ResponseCardsPage } from '../pages/response-cards/response-cards';
 import { UpdateContactPage } from '../pages/update-contact/update-contact';
 import { NextStepsPage } from '../pages/next-steps/next-steps';
 import { SignUpPage } from '../pages/sign-up/sign-up';
+import {PrayerCornerPage} from "../pages/prayer-corner/prayer-corner";
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { SignUpPage } from '../pages/sign-up/sign-up';
     UpdateContactPage,
     NextStepsPage,
     SignUpPage,
+    PrayerCornerPage
 
   ],
   imports: [
@@ -61,6 +63,7 @@ import { SignUpPage } from '../pages/sign-up/sign-up';
     UpdateContactPage,
     NextStepsPage,
     SignUpPage,
+    PrayerCornerPage
   ],
   providers: [
     StatusBar,

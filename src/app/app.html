@@ -1,13 +1,13 @@
 <ion-menu [content]="content">
   <ion-header>
-    <ion-toolbar>
+    <ion-toolbar style="color: #007aff !important; background: none !important;">
       <ion-title>Church Navigator</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+  <ion-content style="background-color: white;">
+    <ion-list style="background-color: white; ">
+      <button style="background-color: white;color: black;" menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
     </ion-list>
