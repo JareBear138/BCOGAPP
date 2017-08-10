@@ -5,6 +5,7 @@ page-post-detail {
 #mainImg{
   padding: 0px;
   width: 100vw;
+  max-height: 400px;
 
 }
 .scroll-content{
@@ -41,4 +42,7 @@ page-post-detail {
 }
 .aut{
   padding-left: 15px;
+}
+ion-content{
+  overflow: scroll;
 }

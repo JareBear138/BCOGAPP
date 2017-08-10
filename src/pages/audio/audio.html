@@ -18,25 +18,30 @@
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-card class="main-audio" ion-item *ngFor="let item of items" >
+  <div   *ngFor="let item of items" >
+    <ion-card class="main-audio">
+      <ion-card-header class="home-header">
+        <ion-item style="padding: 0px;">
+          <ion-avatar  item-left>
+            <img id="home-thumb" class="thumb" *ngIf="item.featured_image_urls && item.featured_image_urls.medium" [src]="item.featured_image_urls.medium">
+          </ion-avatar>
+          <h2 class="homeTitle"  [innerHTML]="item.title.rendered"></h2>
+          <p class="exc" [innerHTML]="item.acf.speaker"></p>
+        </ion-item>
 
-    <ion-card-header class="home-header">
-      <ion-item style="padding: 0px;">
-        <ion-avatar  item-left>
-          <img id="home-thumb" class="thumb" *ngIf="item.featured_image_urls && item.featured_image_urls.medium" [src]="item.featured_image_urls.medium">
-        </ion-avatar>
-        <h2 class="homeTitle"  [innerHTML]="item.title.rendered"></h2>
-      </ion-item>
+
+      </ion-card-header>
+
+    </ion-card>
+    <ion-card class="bottom">
       <audio class="audioStyle" controls preload="none">
         <source src="{{item['acf']['media_url']}}" type="audio/mpeg">
       </audio>
-    </ion-card-header>
-    <hr>
-    <ion-card-content>
-      <p class="exc" [innerHTML]="item.acf.speaker"></p>
-    </ion-card-content>
+    </ion-card>
 
-  </ion-card>
+  </div>
+
+
 
 
 

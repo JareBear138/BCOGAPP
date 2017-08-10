@@ -18,9 +18,10 @@
 
     <div *ngIf="selectedItem" class="selection">
       <div class="main-container" >
-        <img id="mainImg"  *ngIf="selectedItem.featured_image_urls && selectedItem.featured_image_urls.medium"
-           [src]="selectedItem.featured_image_urls.medium">
-        <h2 class="post-title" [innerHTML]="selectedItem.title.rendered"></h2>
+        <img id="mainImg"  *ngIf="selectedItem.featured_image_urls && selectedItem.featured_image_urls.large"
+           [src]="selectedItem.featured_image_urls.large">
+        <h2  *ngIf="selectedItem.featured_image_urls && selectedItem.featured_image_urls.large"
+             class="post-title" [innerHTML]="selectedItem.title.rendered"></h2>
       </div>
 
       <div class="aut">
