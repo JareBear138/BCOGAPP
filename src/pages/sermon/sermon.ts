@@ -34,6 +34,7 @@ export class SermonPage {
   msg: any;
   notes: any;
 
+
   constructor(private alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams,
               private http: Http, private nav: NavController, private loading: LoadingController,
               private iab: InAppBrowser) {

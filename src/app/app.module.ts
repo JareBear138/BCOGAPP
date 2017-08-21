@@ -16,13 +16,15 @@ import { NewsletterPage } from "../pages/newsletter/newsletter";
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { FormsModule }   from '@angular/forms';
-import {SermonPage} from "../pages/sermon/sermon";
+import { SermonPage } from "../pages/sermon/sermon";
 import { AudioPage } from '../pages/audio/audio';
 import { ResponseCardsPage } from '../pages/response-cards/response-cards';
 import { UpdateContactPage } from '../pages/update-contact/update-contact';
 import { NextStepsPage } from '../pages/next-steps/next-steps';
 import { SignUpPage } from '../pages/sign-up/sign-up';
-import {PrayerCornerPage} from "../pages/prayer-corner/prayer-corner";
+import { PrayerCornerPage } from "../pages/prayer-corner/prayer-corner";
+import { PrayerRequestsPage } from "../pages/prayer-requests/prayer-requests";
+import { SubmitprayerPage } from "../pages/submitprayer/submitprayer";
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import {PrayerCornerPage} from "../pages/prayer-corner/prayer-corner";
     UpdateContactPage,
     NextStepsPage,
     SignUpPage,
-    PrayerCornerPage
+    PrayerCornerPage,
+    PrayerRequestsPage,
+    SubmitprayerPage
 
   ],
   imports: [
@@ -63,7 +67,9 @@ import {PrayerCornerPage} from "../pages/prayer-corner/prayer-corner";
     UpdateContactPage,
     NextStepsPage,
     SignUpPage,
-    PrayerCornerPage
+    PrayerCornerPage,
+    PrayerRequestsPage,
+    SubmitprayerPage
   ],
   providers: [
     StatusBar,

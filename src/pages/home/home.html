@@ -3,21 +3,23 @@
     <button ion-button menuToggle>
       <ion-icon name="menu" style="color: white;"></ion-icon>
     </button>
-    <ion-title >Front Page</ion-title>
+    <ion-title >Busti Church of God</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding >
+
+
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-card class="posts-pinned" ion-item *ngFor="let item of itemsPin" (click)="itemTapped($event, item)">
 
+
+  <ion-card *ngFor="let item of itemsPin" (click)="itemTapped($event, item)">
+    <img class="card-img" *ngIf="item.featured_image_urls && item.featured_image_urls.medium" [src]="item.featured_image_urls.large">
     <ion-card-header class="home-header">
+
       <ion-item style="padding: 0px;">
-        <ion-avatar  item-left>
-          <img id="home-thumb" class="thumb" *ngIf="item.featured_image_urls && item.featured_image_urls.medium" [src]="item.featured_image_urls.medium">
-        </ion-avatar>
         <h2 class="homeTitle"  [innerHTML]="item.title.rendered"></h2>
       </ion-item>
       <div class="pin-container" >
@@ -25,22 +27,24 @@
         <h4 class="block-pin">Pinned Post</h4>
       </div>
     </ion-card-header>
-    <hr>
     <ion-card-content>
       <p class="exc" [innerHTML]="item.excerpt.rendered"></p>
     </ion-card-content>
 
   </ion-card>
-  <br>
-  <h2 class="sep"> {{news}} </h2>
-  <br>
-  <ion-card class="posts" ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
 
+
+
+  <br>
+  <ion-item>
+  <h1 class="sep"> {{news}} </h1>
+  </ion-item>
+  <br>
+
+  <ion-card *ngFor="let item of items" (click)="itemTapped($event, item)">
+    <img class="card-img" *ngIf="item.featured_image_urls && item.featured_image_urls.large" [src]="item.featured_image_urls.large">
     <ion-card-header class="home-header">
       <ion-item style="padding: 0px;">
-        <ion-avatar  item-left>
-            <img id="home-thumb" class="thumb" *ngIf="item.featured_image_urls && item.featured_image_urls.medium" [src]="item.featured_image_urls.medium">
-          </ion-avatar>
           <h2 class="homeTitle"  [innerHTML]="item.title.rendered"></h2>
       </ion-item>
       <div class="pin-container" >

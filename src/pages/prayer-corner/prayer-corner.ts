@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+import {PrayerRequestsPage} from "../prayer-requests/prayer-requests";
+import { SubmitprayerPage } from "../submitprayer/submitprayer";
 
 /**
  * Generated class for the PrayerCornerPage page.
@@ -14,11 +16,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PrayerCornerPage {
 
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PrayerCornerPage');
+  }
+
+  itemTapped(event, item) {
+    this.navCtrl.push(PrayerRequestsPage, {
+
+    });
+  }
+
+  itemTappedSubmit(event, item) {
+    this.navCtrl.push(SubmitprayerPage, {
+
+    });
   }
 
 }

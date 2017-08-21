@@ -7,12 +7,40 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>prayer-requests</ion-title>
+    <ion-title>Prayer Requests</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content >
+
+  <ion-segment class="prayer-segment" [(ngModel)]="prayerType">
+    <ion-segment-button value="projectsSwitch">
+      Projects
+    </ion-segment-button>
+    <ion-segment-button value="praisesSwitch">
+      Praises
+    </ion-segment-button>
+    <ion-segment-button value="requestsSwitch">
+      Requests
+    </ion-segment-button>
+  </ion-segment>
+
+  <div *ngIf="loaded == true" [ngSwitch]="prayerType">
+    <ion-card padding *ngSwitchCase="'projectsSwitch'" >
+      <ion-item [innerHTML]="projects"></ion-item>
+    </ion-card>
+
+    <ion-card padding *ngSwitchCase="'praisesSwitch'">
+      <ion-item [innerHTML]="praises"></ion-item>
+    </ion-card>
+
+    <ion-card padding *ngSwitchCase="'requestsSwitch'">
+      <ion-item [innerHTML]="requests"></ion-item>
+    </ion-card>
+
+  </div>
+
 
 </ion-content>

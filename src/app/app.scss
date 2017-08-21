@@ -22,6 +22,13 @@
 }  .toolbar-title{
   color: white;
 }
+.toolbar-title {
+  overflow: visible !important;
+}
+
+.back-button {
+  color: white !important;
+}
 .bar-button-menutoggle.bar-button-menutoggle-md{
   color: white;
 }

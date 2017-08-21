@@ -7,12 +7,56 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>signUp</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu" style="color: white;"></ion-icon>
+    </button>
+    <ion-title >Events</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <form (ngSubmit)="submitHandler()">
+    <ion-card *ngIf="emailFlag === true"  >
+
+      <ion-card-header class="x">
+        <h2 style="color: white;" >Available Events</h2>
+      </ion-card-header>
+      <hr class="line">
+      <ion-card-content class="input-hand">
+        <ion-item name="container" class="container" *ngFor="let item of eArray; let i = index" [attr.data-index]="i">
+
+          <input type="checkbox"  name="{{q + i}}" id="{{q + i}}" [(ngModel)]="valueArray[i]" value="{{eArray[i]}}"  />
+          <label class="label-e" style="" for="{{q + i}}">{{eArray[i]}}</label>
+        </ion-item>
+      </ion-card-content>
+
+    </ion-card>
+    <ion-card *ngIf="emailFlag === true">
+      <ion-card-header class="headerReq">
+        <h2 style="color: white;">Additional Notes</h2>
+      </ion-card-header>
+      <ion-item>
+        <textarea  class="questionTA" [(ngModel)]="notes" name="comments" placeholder="Notes here..."></textarea>
+      </ion-item>
+
+    </ion-card>
+    <ion-card class="last" *ngIf="emailFlag === true">
+      <ion-card-header class="headerReq">
+        <h2 style="color: white;">Your Information</h2>
+      </ion-card-header>
+      <ion-card-content class="input-hand">
+        <ion-input type="text" [(ngModel)]="name" name="name" placeholder="Name" ></ion-input>
+        <ion-input type="email" [(ngModel)]="email" name="email" placeholder="Email" ></ion-input>
+        <button class="submit" ion-button type="submit" block >Submit Sign-Up</button>
+      </ion-card-content>
+
+
+    </ion-card>
+
+
+  </form>
 
 </ion-content>

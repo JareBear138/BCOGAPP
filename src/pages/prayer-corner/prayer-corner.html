@@ -16,12 +16,12 @@
 
 <ion-content >
 
-  <button  class="resp" ion-button full outline >
+  <button  class="resp" ion-button full outline (click)="itemTapped($event, item)" >
     <ion-icon class="ic" ios="md-list-box" md="md-list-box"></ion-icon>
     Requests/Praises/Projects
   </button>
 
-  <button class="resp" ion-button full outline >
+  <button class="resp" ion-button full outline (click)="itemTappedSubmit($event, item)" >
     <ion-icon class="ic" ios="ios-help-buoy" md="ios-help-buoy"></ion-icon>
     Submit Request/Praise
   </button>

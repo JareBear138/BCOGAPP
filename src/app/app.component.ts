@@ -23,21 +23,21 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, icon: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Blog Articles', component: ListPage },
-      { title: 'Upcoming Events', component: EventsPage },
-      { title: 'Newsletter', component: NewsletterPage},
-      { title: 'Sermon Handout', component: SermonPage},
-      { title: 'Audio Sermons', component: AudioPage},
-      { title: 'Response Card', component: ResponseCardsPage},
-      { title: 'Prayer Corner', component: PrayerCornerPage}
+      { title: 'Front Page', component: HomePage, icon: 'ios-bookmarks' },
+      { title: 'Blog Articles', component: ListPage, icon: 'ios-filing' },
+      { title: 'Upcoming Events', component: EventsPage, icon: 'ios-calendar' },
+      { title: 'Newsletter', component: NewsletterPage, icon: 'ios-document'},
+      { title: 'Sermon Handout', component: SermonPage, icon: 'ios-create'},
+      { title: 'Audio Sermons', component: AudioPage, icon: 'ios-headset'},
+      { title: 'Response Card', component: ResponseCardsPage, icon: 'ios-contacts'},
+      { title: 'Prayer Corner', component: PrayerCornerPage, icon: 'ios-help-buoy'}
     ];
 
   }
