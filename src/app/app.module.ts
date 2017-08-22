@@ -25,7 +25,7 @@ import { SignUpPage } from '../pages/sign-up/sign-up';
 import { PrayerCornerPage } from "../pages/prayer-corner/prayer-corner";
 import { PrayerRequestsPage } from "../pages/prayer-requests/prayer-requests";
 import { SubmitprayerPage } from "../pages/submitprayer/submitprayer";
-
+import { PopoverinfoPage } from "../pages/popoverinfo/popoverinfo";
 @NgModule({
   declarations: [
     MyApp,
@@ -43,7 +43,8 @@ import { SubmitprayerPage } from "../pages/submitprayer/submitprayer";
     SignUpPage,
     PrayerCornerPage,
     PrayerRequestsPage,
-    SubmitprayerPage
+    SubmitprayerPage,
+    PopoverinfoPage
 
   ],
   imports: [
@@ -69,7 +70,8 @@ import { SubmitprayerPage } from "../pages/submitprayer/submitprayer";
     SignUpPage,
     PrayerCornerPage,
     PrayerRequestsPage,
-    SubmitprayerPage
+    SubmitprayerPage,
+    PopoverinfoPage
   ],
   providers: [
     StatusBar,

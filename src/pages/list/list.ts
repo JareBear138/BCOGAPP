@@ -18,6 +18,7 @@ export class ListPage {
   items: any;
   page: any;
   eopFlag: boolean = false;
+  network: string = "up";
 
   constructor( private http: Http,  private nav: NavController, public loading: LoadingController) {
 
@@ -35,6 +36,7 @@ export class ListPage {
         }, error => {
           setTimeout( () => {
             loader.dismiss().then();
+            this.network = "down";
             this.nav.push(NetworkDownPage);
           }, 5000);
       });
@@ -59,8 +61,9 @@ export class ListPage {
       .subscribe(data => {
         this.items = data;
         console.log("API CALL SUCCESS");
+        this.network = "up";
         refresher.complete();
-    });
+    },error => {this.network = "down";});
       //console.log(this.itemsPin);
   }
 

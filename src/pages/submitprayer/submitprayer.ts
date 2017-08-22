@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { PopoverController } from 'ionic-angular';
+import { PopoverinfoPage } from '../popoverinfo/popoverinfo';
 
 /**
  * Generated class for the SubmitprayerPage page.
@@ -19,12 +21,21 @@ export class SubmitprayerPage {
   name: any;
   email: any;
   prayer: any;
+  refFlag: any = {refFlag: "submitPrayer"};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public popoverCtrl: PopoverController, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SubmitprayerPage');
+  }
+
+  presentPopover( myEvent ) {
+
+    let popover = this.popoverCtrl.create(PopoverinfoPage, this.refFlag );
+    popover.present({
+      ev: myEvent
+    });
   }
 
 }

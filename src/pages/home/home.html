@@ -4,16 +4,26 @@
       <ion-icon name="menu" style="color: white;"></ion-icon>
     </button>
     <ion-title >Busti Church of God</ion-title>
+    <ion-buttons end>
+      <button style="background-color: #303030; " (click)="presentPopover($event)">
+        <ion-icon class="infoButton" name="ios-information-circle-outline"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding >
+<ion-content >
 
 
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
+  <ion-item *ngIf="network == 'down'">
+    <hr>
+    <h3 style="text-align: center; color: #303030;"><i>Offline - Pull to Refresh</i></h3>
+
+  </ion-item>
 
   <ion-card *ngFor="let item of itemsPin" (click)="itemTapped($event, item)">
     <img class="card-img" *ngIf="item.featured_image_urls && item.featured_image_urls.medium" [src]="item.featured_image_urls.large">

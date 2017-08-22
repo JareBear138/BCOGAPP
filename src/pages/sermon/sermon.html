@@ -16,6 +16,12 @@
 
 <ion-content padding>
 
+  <ion-item *ngIf="network == 'down'">
+    <hr>
+    <h3 style="text-align: center; color: #303030;"><i>Offline</i></h3>
+
+  </ion-item>
+
   <ion-fab right bottom class="but">
     <button ion-fab color="black" (click)="loadBrowser(this.browser);">
       <ion-icon name="md-document"></ion-icon>

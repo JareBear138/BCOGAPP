@@ -20,6 +20,12 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
+  <ion-item *ngIf="network == 'down'">
+    <hr>
+    <h3 style="text-align: center; color: #303030;"><i>Offline - Pull to Refresh</i></h3>
+
+  </ion-item>
+
     <ion-card class="event-posts" ion-item *ngFor="let item of items" >
       <ion-card-header>
         <h2 class="full" [innerHTML]="item.title"></h2>

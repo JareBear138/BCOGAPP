@@ -18,6 +18,13 @@
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
+
+  <ion-item *ngIf="network == 'down'">
+    <hr>
+    <h3 style="text-align: center; color: #303030;"><i>Offline - Pull to Refresh</i></h3>
+
+  </ion-item>
+
   <div   *ngFor="let item of items" >
     <ion-card class="main-audio">
       <ion-card-header class="home-header">
@@ -42,7 +49,9 @@
   </div>
 
 
-
+  <div *ngIf="eopFlag === true">
+    <hr><h4 style="text-align: center; color: lightgray;"><i>No More Posts</i></h4><hr>
+  </div>
 
 
   <ion-infinite-scroll (ionInfinite)="loadMore($event)">

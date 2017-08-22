@@ -10,6 +10,9 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Rx';
 import {NetworkDownPage} from "../network-down/network-down";
 
+import { PopoverController } from 'ionic-angular';
+import { PopoverinfoPage } from '../popoverinfo/popoverinfo';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -25,8 +28,10 @@ export class HomePage {
   news: any;
   eopFlag: boolean = false;
   msg: any;
+  refFlag: any = {refFlag: "frontPage"};
+  network: string = "up";
 
-  constructor(private http: Http,  private nav: NavController, public loading: LoadingController) {
+  constructor(public popoverCtrl: PopoverController, private http: Http,  private nav: NavController, public loading: LoadingController) {
 
   }
 
@@ -57,7 +62,8 @@ export class HomePage {
         setTimeout( () => {
           loader.dismiss().then();
           this.nav.push(NetworkDownPage);
-        }, 5000);
+          this.network = "down";
+        }, 10000);
       });
     });
 
@@ -68,6 +74,14 @@ export class HomePage {
     }, 10000);
         //this.items = data, loader.dismiss()
     **/
+  }
+
+  presentPopover( myEvent ) {
+
+    let popover = this.popoverCtrl.create(PopoverinfoPage, this.refFlag );
+    popover.present({
+      ev: myEvent
+    });
   }
 
   /**
@@ -104,7 +118,9 @@ export class HomePage {
         this.itemsPin = results[0];
         this.items = results[1];
         this.news = "News";
+        this.network = "up";
         refresher.complete();
+
         //console.log(this.itemsPin);
       });
 

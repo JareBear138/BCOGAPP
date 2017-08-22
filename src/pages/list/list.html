@@ -11,8 +11,15 @@
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
+
+  <ion-item *ngIf="network == 'down'">
+    <hr>
+    <h3 style="text-align: center; color: #303030;"><i>Offline - Pull to Refresh</i></h3>
+
+  </ion-item>
+
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+    <button class="blogItem" ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
       <ion-avatar item-left>
         <img class="thumb" *ngIf="item.featured_image_urls && item.featured_image_urls.thumbnail" [src]="item.featured_image_urls.thumbnail">
       </ion-avatar>
