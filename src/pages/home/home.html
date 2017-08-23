@@ -25,7 +25,7 @@
 
   </ion-item>
 
-  <ion-card *ngFor="let item of itemsPin" (click)="itemTapped($event, item)">
+  <ion-card class="homeCard" *ngFor="let item of itemsPin" (click)="itemTapped($event, item)">
     <img class="card-img" *ngIf="item.featured_image_urls && item.featured_image_urls.medium" [src]="item.featured_image_urls.large">
     <ion-card-header class="home-header">
 
@@ -42,16 +42,9 @@
     </ion-card-content>
 
   </ion-card>
+  
 
-
-
-  <br>
-  <ion-item>
-  <h1 class="sep"> {{news}} </h1>
-  </ion-item>
-  <br>
-
-  <ion-card *ngFor="let item of items" (click)="itemTapped($event, item)">
+  <ion-card class="homeCard" *ngFor="let item of items" (click)="itemTapped($event, item)">
     <img class="card-img" *ngIf="item.featured_image_urls && item.featured_image_urls.large" [src]="item.featured_image_urls.large">
     <ion-card-header class="home-header">
       <ion-item style="padding: 0px;">
