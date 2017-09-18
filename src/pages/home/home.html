@@ -21,7 +21,8 @@
 
   <ion-item *ngIf="network == 'down'">
     <hr>
-    <h3 style="text-align: center; color: #303030;"><i>Offline - Pull to Refresh</i></h3>
+    <h3 style="text-align: center; color: #303030;"><i>Offline - Pull to Refresh <br>
+    (Church Info is Available Offline)</i></h3>
 
   </ion-item>
 
@@ -42,7 +43,7 @@
     </ion-card-content>
 
   </ion-card>
-  
+
 
   <ion-card class="homeCard" *ngFor="let item of items" (click)="itemTapped($event, item)">
     <img class="card-img" *ngIf="item.featured_image_urls && item.featured_image_urls.large" [src]="item.featured_image_urls.large">

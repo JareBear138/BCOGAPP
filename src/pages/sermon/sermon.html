@@ -18,7 +18,7 @@
 
   <ion-item *ngIf="network == 'down'">
     <hr>
-    <h3 style="text-align: center; color: #303030;"><i>Offline</i></h3>
+    <h3 style="text-align: center; color: #303030;"><i>-- Offline --</i></h3>
 
   </ion-item>
 
@@ -45,7 +45,7 @@
         <h3 style="color: white;">Additional Notes</h3>
       </ion-card-header>
       <ion-item>
-        <textarea  class="questionTA" [(ngModel)]="notes" name="comments" placeholder="Notes here..."></textarea>
+        <textarea  id="notes" class="questionTA" [(ngModel)]="notes" name="comments" placeholder="Notes here..."></textarea>
       </ion-item>
 
     </ion-card>

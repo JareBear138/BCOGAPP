@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Http } from '@angular/http';
-
+import { ToastController } from 'ionic-angular';
+import { LoadingController } from 'ionic-angular';
 
 /**
  * Generated class for the NewsletterPage page.
@@ -19,17 +20,37 @@ export class NewsletterPage {
 
   browser: any;
   email: any = "";
+  url: any = "https://busticog.org/wp-json/wp/v2/posts/1940?fields=acf";
+  newsletterURL: any;
   data: any;
   response: any;
   classVar: any;
   msg: any;
+  network: any = "down";
+  items: any;
+  emailFlag: any = false;
 
-  constructor(private http: Http, public navCtrl: NavController, public navParams: NavParams, private iab: InAppBrowser) {
+  constructor( private toastCtrl: ToastController, private http: Http, public navCtrl: NavController,
+               public navParams: NavParams, private iab: InAppBrowser, private loading: LoadingController) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NewsletterPage');
-
+    let loader = this.loading.create({content: 'Loading Newsletter', showBackdrop: false});
+    loader.present().then(() => {
+      this.http.get(this.url)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.items = data;
+          loader.dismiss();
+          this.emailFlag = true;
+          this.newsletterURL = this.items['acf']['url'];
+        }, () => {
+          setTimeout( () => {
+            loader.dismiss().then();
+            this.network = "down";
+          }, 5000);
+        });
+    });
 
   }
 
@@ -44,7 +65,7 @@ export class NewsletterPage {
    */
   loadBrowser(){
     const browser = this.iab.create('https://docs.google.com/gview?embedded=true&url=' +
-      'https://www.busticog.org/wp-content/uploads/Busti-Beacon-June-2017.pdf', '_blank', 'zoom=no');
+      this.newsletterURL, '_blank', 'zoom=yes');
 
     return browser;
   }
@@ -74,16 +95,27 @@ export class NewsletterPage {
         //console.log("API CALL SUCCESS");
         //Test to see if email was sent
         if( this.response.pass == "no"){
-          this.classVar = "negative"; //set styling var
-          this.msg = "Error"; //Not implemented in view
+          let toast = this.toastCtrl.create({
+            message: this.response['message'],
+            duration: 3000,
+            position: 'bottom'
+          });
+          toast.present();
         }else{
-          this.classVar = "positive";
-          this.msg = "Success";
+          let toast = this.toastCtrl.create({
+            message: 'Sign-Up Successfully Submitted',
+            duration: 3000,
+            position: 'bottom'
+          });
+          toast.present();
         }
       }, data => {
-        //If http request fails -
-        this.classVar = "negative";
-        this.msg = "Network Error: try again later";
+        let toast = this.toastCtrl.create({
+          message: 'Network Error - Try Again Later',
+          duration: 3000,
+          position: 'bottom'
+        });
+        toast.present();
       });
   }
   nothing(){

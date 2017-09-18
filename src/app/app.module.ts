@@ -26,6 +26,8 @@ import { PrayerCornerPage } from "../pages/prayer-corner/prayer-corner";
 import { PrayerRequestsPage } from "../pages/prayer-requests/prayer-requests";
 import { SubmitprayerPage } from "../pages/submitprayer/submitprayer";
 import { PopoverinfoPage } from "../pages/popoverinfo/popoverinfo";
+import { SettingsPage } from  "../pages/settings/settings";
+import {SendinfoPage} from "../pages/sendinfo/sendinfo";
 @NgModule({
   declarations: [
     MyApp,
@@ -44,7 +46,9 @@ import { PopoverinfoPage } from "../pages/popoverinfo/popoverinfo";
     PrayerCornerPage,
     PrayerRequestsPage,
     SubmitprayerPage,
-    PopoverinfoPage
+    PopoverinfoPage,
+    SettingsPage,
+    SendinfoPage
 
   ],
   imports: [
@@ -54,6 +58,7 @@ import { PopoverinfoPage } from "../pages/popoverinfo/popoverinfo";
     FormsModule
   ],
   bootstrap: [IonicApp],
+
   entryComponents: [
     MyApp,
     HomePage,
@@ -71,7 +76,9 @@ import { PopoverinfoPage } from "../pages/popoverinfo/popoverinfo";
     PrayerCornerPage,
     PrayerRequestsPage,
     SubmitprayerPage,
-    PopoverinfoPage
+    PopoverinfoPage,
+    SettingsPage,
+    SendinfoPage
   ],
   providers: [
     StatusBar,

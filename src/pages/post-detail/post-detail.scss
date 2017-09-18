@@ -6,6 +6,15 @@ page-post-detail {
   padding: 0px;
   width: 100vw;
   max-height: 400px;
+  padding: 0px;
+  width: 100vw;
+  max-height: 400px;
+  max-width: 600px;
+  text-align: center;
+  background-color: black;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 
 }
 .scroll-content{
@@ -31,6 +40,7 @@ page-post-detail {
   left:0px;
   padding: 0px;
   width: 100vw;
+  background-color: black;
 }
 .block-aut{
   display: inline-block;

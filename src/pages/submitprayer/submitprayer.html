@@ -21,7 +21,7 @@
 
 <ion-content >
 
-  <form (ngSubmit)="logForm()">
+  <form (ngSubmit)="submitPrayer()">
     <ion-card>
       <ion-card-header class="headerReq">
         Contact Info
@@ -52,7 +52,7 @@
         <ion-checkbox name="privacyBox" [(ngModel)]="privacyBox" ></ion-checkbox>
       </ion-item>
       <ion-item name="appPrivacyBox" *ngIf="privacyBox == true">
-        <ion-label>Do not publish on the App </ion-label>
+        <ion-label>Publish request on the App </ion-label>
         <ion-checkbox name="appPrivacyBox" [(ngModel)]="appPrivacyBox" ></ion-checkbox>
       </ion-item>
       <ion-item>

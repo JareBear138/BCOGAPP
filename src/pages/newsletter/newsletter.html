@@ -16,7 +16,7 @@
 
 <ion-content padding>
 
-    <ion-card class="buttonNews" (click)="loadBrowser(this.browser);">
+    <ion-card  class="buttonNews" (click)="loadBrowser(this.browser);">
       <ion-card-content class="buttonNews" >View Newsletter</ion-card-content>
     </ion-card>
 
@@ -40,14 +40,11 @@
 
           <button class="submit" ion-button type="submit" block>Subscribe</button>
         </form>
-        <ion-card class="{{classVar}}" (click)="nothing()" >
-
-          <ion-card-content class="response-text" >{{response?.message}}</ion-card-content>
-        </ion-card>
       </ion-card-content>
     </ion-card>
-
-
-
-
 </ion-content>
+
+
+
+
+

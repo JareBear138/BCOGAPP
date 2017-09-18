@@ -8,15 +8,12 @@ import { ListPage } from '../pages/list/list';
 import { EventsPage } from  '../pages/events/events';
 import { NewsletterPage } from '../pages/newsletter/newsletter';
 import { SermonPage } from '../pages/sermon/sermon';
-import { AudioPage } from '../pages/audio/audio';
 import { ResponseCardsPage } from '../pages/response-cards/response-cards';
-import { UpdateContactPage } from '../pages/update-contact/update-contact';
-import { NextStepsPage } from '../pages/next-steps/next-steps';
-import { SignUpPage } from '../pages/sign-up/sign-up';
 import { PrayerCornerPage } from '../pages/prayer-corner/prayer-corner';
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -35,7 +32,6 @@ export class MyApp {
       { title: 'Upcoming Events', component: EventsPage, icon: 'ios-calendar' },
       { title: 'Newsletter', component: NewsletterPage, icon: 'ios-document'},
       { title: 'Sermon Handout', component: SermonPage, icon: 'ios-create'},
-      { title: 'Audio Sermons', component: AudioPage, icon: 'ios-headset'},
       { title: 'Response Card', component: ResponseCardsPage, icon: 'ios-contacts'},
       { title: 'Prayer Corner', component: PrayerCornerPage, icon: 'ios-help-buoy'}
     ];
@@ -46,7 +42,7 @@ export class MyApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
+      this.statusBar.styleLightContent();
       this.splashScreen.hide();
     });
   }

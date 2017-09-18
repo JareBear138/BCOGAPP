@@ -7,7 +7,9 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title style="color: white;" [innerHTML]="selectedItem.title.rendered"></ion-title>
+    <ion-title style="color: white; white-space: nowrap;
+    text-overflow: ellipsis; width: 90% !important;
+    overflow-x: hidden;" [innerHTML]="selectedItem.title.rendered"></ion-title>
   </ion-navbar>
 
 </ion-header>

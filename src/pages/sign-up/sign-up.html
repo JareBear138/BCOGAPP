@@ -18,6 +18,12 @@
 
 <ion-content>
 
+  <ion-item *ngIf="network == 'down'">
+    <hr>
+    <h3 style="text-align: center; color: #303030;"><i>-- Offline --</i></h3>
+
+  </ion-item>
+
   <form (ngSubmit)="submitHandler()">
     <ion-card *ngIf="emailFlag === true"  >
 

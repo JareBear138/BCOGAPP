@@ -6,6 +6,7 @@ import { NavController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 
 import {NetworkDownPage} from "../network-down/network-down";
+import { ToastController } from 'ionic-angular';
 
 
 
@@ -20,7 +21,7 @@ export class ListPage {
   eopFlag: boolean = false;
   network: string = "up";
 
-  constructor( private http: Http,  private nav: NavController, public loading: LoadingController) {
+  constructor( private toastCtrl: ToastController, private http: Http,  private nav: NavController, public loading: LoadingController) {
 
   }
   ionViewDidLoad() {
@@ -63,7 +64,18 @@ export class ListPage {
         console.log("API CALL SUCCESS");
         this.network = "up";
         refresher.complete();
-    },error => {this.network = "down";});
+    },error => {
+
+        let toast = this.toastCtrl.create({
+          message: 'Couldn\'t refresh feed - No Connection',
+          duration: 3000,
+          position: 'bottom'
+        });
+        toast.present();
+
+
+
+      });
       //console.log(this.itemsPin);
   }
 

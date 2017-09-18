@@ -9,23 +9,21 @@ import { AlertController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 
 /**
- * Note on the Backend:
+ * Generated class for the SendinfoPage page.
  *
- * As of the creation of this page (July 2017), the backend currently uses PHP to receive
- * user data and send out emails with the questions and answers as well as
- * a link to the Sermon Handout.
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
  */
 
 @Component({
-  selector: 'page-sermon',
-  templateUrl: 'sermon.html',
+  selector: 'page-sendinfo',
+  templateUrl: 'sendinfo.html',
 })
-export class SermonPage {
+export class SendinfoPage {
 
-  requestURL: any = "https://busticog.org/wp-json/wp/v2/posts/1545?fields=acf";
+  requestURL: any = "https://busticog.org/wp-json/wp/v2/posts/1925?fields=acf";
   items: any;
-  handoutURL: string = "https://docs.google.com/gview?embedded=true&url=";
-  qArray: Array<string>;
+  eArray: Array<string>;
   valueArray: Array<string> = ["","","","","","","","","",""];
   sendArray: Array<string> = [];
   q: string = "q";
@@ -34,8 +32,8 @@ export class SermonPage {
   response: any;
   msg: any;
   notes: any;
+  name: any = "";
   network: string = "up";
-
 
   constructor(private alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams,
               private http: Http, private nav: NavController, private loading: LoadingController,
@@ -52,7 +50,7 @@ export class SermonPage {
    * @returns: void
    */
   ionViewDidLoad() {
-    let loader = this.loading.create({content: 'Loading Questions...', showBackdrop: false});
+    let loader = this.loading.create({content: 'Loading Options', showBackdrop: false});
     loader.present().then(() => {
       this.http.get(this.requestURL)
         .map(res => res.json())
@@ -60,8 +58,7 @@ export class SermonPage {
           this.items = data;
           loader.dismiss();
           this.emailFlag = true;
-          this.handoutURL = this.handoutURL + this.items['acf']['url'];
-          this.qArray = this.getQuestions();
+          this.eArray = this.getEvents();
         }, () => {
           setTimeout( () => {
             loader.dismiss().then();
@@ -72,19 +69,15 @@ export class SermonPage {
     });
 
   }
-  loadBrowser(){
-    const browser = this.iab.create('https://www.busticog.org/sermons/', '_blank', 'zoom=no');
 
-    return browser;
-  }
-
-  getQuestions( ){
+  getEvents( ){
     let newArray: string[] = [];
     var q = 'q';
     var x = 0;
-    for( var i = 1; i < 11; i++){
+    for( var i = 1; i < 7; i++){
       if (this.items['acf'][q + String(i)] !== ""){
         newArray[x] = this.items['acf'][q + String(i)];
+        this.valueArray[x] = "false"; //Set Value arrays to false to uncheck all option by default
         x++;
       }
     }
@@ -93,12 +86,12 @@ export class SermonPage {
   }
 
   validateEmail(email) {
-    //TODO: Split RE into multiple lines with RE Object
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
+      var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+
   }
   submitHandler(){
-    if (this.email != ""){
+    if (this.name !== ""){
       this.removeBlanks();
       var emptyFlag = 0
       for (var i = 0; i < this.sendArray.length; i++){
@@ -135,8 +128,8 @@ export class SermonPage {
         }
       }
     }else{
-      let msg = "Whoops! You need to enter an your Email!";
-      this.presentAlertSimple(msg, "Missing Email");
+      let msg = "Please provide your name";
+      this.presentAlertSimple(msg, "Name not provided");
     }
   }
 
@@ -151,24 +144,19 @@ export class SermonPage {
    *@returns void
    */
   finalSubmit(){
-    var greatArray = this.qArray.concat(this.sendArray);
-    greatArray.unshift(this.email, this.handoutURL, this.notes);
+    var greatArray = this.eArray.concat(this.sendArray);
+    greatArray.unshift(this.name,this.email, this.notes);
     //TODO: Remove domain literal
+    console.log(JSON.stringify(greatArray));
     this.http.post('http://www.app.busticog.org/' +
-      'sermon.php', JSON.stringify(greatArray))
+      'sendinfo.php', JSON.stringify(greatArray))
       .map(res => res.json())
       .subscribe(data => {
+
         this.response = data;
         if( this.response['pass'] != "yes"){
-          this.msg = "Unable to Submit at this time"; //TODO: Fix this
-          let toast = this.toastCtrl.create({
-            message: this.msg,
-            position: 'bottom',
-            showCloseButton: true,
-            closeButtonText: "Ok"
-          });
-          toast.present();
-
+          this.msg = "Unable to submit at this time"; //TODO: Fix this
+          this.presentAlertSimple(this.msg, "Error");
         }else{
           let toast = this.toastCtrl.create({
             message: this.response['msg'],
@@ -220,7 +208,7 @@ export class SermonPage {
    * @returns void
    */
   removeBlanks(){
-    for ( var i = 0; i < this.qArray.length; i++ ){
+    for ( var i = 0; i < this.eArray.length; i++ ){
       this.sendArray[i] = this.valueArray[i];
     }
   }

@@ -23,6 +23,8 @@ export class PopoverinfoPage {
   }
 
 
+
+
   close() {
     this.viewCtrl.dismiss();
   }

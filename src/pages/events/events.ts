@@ -6,6 +6,9 @@ import {NavController, NavParams} from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 
 import {NetworkDownPage} from "../network-down/network-down";
+import { ToastController } from 'ionic-angular';
+
+
 
 /**
  * Generated class for the EventsPage page.
@@ -20,13 +23,14 @@ import {NetworkDownPage} from "../network-down/network-down";
 })
 export class EventsPage {
 
-  url: string = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%3D%22https%3' +
-    'A%2F%2Fwww.mychurchevents.com%2Fcalendar%2Frss.ashx%3Fdays%3D30%26ci%3D57621157%26igd%3D%22&format=json&diagn' +
-    'ostics=true&callback=';
+  url: string = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2F' +
+    'www.mychurchevents.com%2Fcalendar%2Frss.ashx%3Fdays%3D31%26ci%3D57621157%26igd%3D';
   items: any;
+  network: string = "up";
+  flag: string = "fail"
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, public loading: LoadingController,
+  constructor( private toastCtrl: ToastController, public navCtrl: NavController, public navParams: NavParams, private http: Http, public loading: LoadingController,
   private nav: NavController) {
   }
 
@@ -36,7 +40,7 @@ export class EventsPage {
       this.http.get(this.url)
         .map(res => res.json())
         .subscribe(data => {
-          this.items = data['query']['results']['item'];
+          this.items = data['items'];
           console.log(this.items);
           loader.dismiss();
           console.log(data);
@@ -63,13 +67,22 @@ export class EventsPage {
     this.http.get(this.url)
       .map(res => res.json())
       .subscribe(data => {
-        this.items = data['query']['results']['item'];
-        console.log("http complete");
-        refresher.complete();
+        if( data['items'] == null){
+          this.network = "down";
+        }else if(data['query']['results'] != null){
+          this.items = data['items'];
+          console.log(data);
+          this.flag = "pass"
+        }
       }, error => {
-        setTimeout( () => {
-          this.nav.push(NetworkDownPage);
-        }, 5000);
+        let toast = this.toastCtrl.create({
+          message: 'Couldn\'t refresh feed - No Connection',
+          duration: 3000,
+          position: 'bottom'
+        });
+        toast.present();
+        this.network = "down";
+
       });
   }
 

@@ -1,5 +1,29 @@
 // http://ionicframework.com/docs/v2/theming/
 
+.platform-cordova.platform-ios ion-navbar,
+.platform-cordova.platform-ios ion-app > ion-toolbar:first-child,
+.platform-cordova.platform-ios ion-app > ion-toolbar:first-child ion-title,
+.platform-cordova.platform-ios ion-app > ion-toolbar:first-child ion-segment,
+.platform-cordova.platform-ios ion-menu > ion-toolbar:first-child,
+.platform-cordova.platform-ios ion-menu > ion-toolbar:first-child ion-title,
+.platform-cordova.platform-ios ion-menu > ion-toolbar:first-child ion-segment,
+.platform-cordova.platform-ios ion-page.modal > ion-toolbar:first-child,
+.platform-cordova.platform-ios ion-page.modal > ion-toolbar:first-child ion-title,
+.platform-cordova.platform-ios ion-page.modal > ion-toolbar:first-child ion-segment {
+  padding-top: 0;
+  height: 44px;
+  min-height: 44px;
+}
+
+.platform-cordova.platform-ios ion-navbar ion-title,
+.platform-cordova.platform-ios ion-navbar ion-segment {
+  padding-top: 0;
+}
+
+.popover-content{
+  overflow-y: scroll !important;
+}
+
 
 // App Global Sass
 // --------------------------------------------------
@@ -20,8 +44,12 @@ div.popover-content{
 .scroll-content{
   border: none !important;
 }
+
+ion-header{
+ position: relative !important;
+}
 .toolbar-background{
-  background-color: 	#303030;
+  background-color: 	#303030 !important;
   color: white;
 }  .toolbar-title{
   color: white;
@@ -29,6 +57,7 @@ div.popover-content{
 .toolbar-title {
   overflow: visible !important;
 }
+
 
 .back-button {
   color: white !important;

@@ -25,6 +25,7 @@ export class PrayerRequestsPage {
   requests: any;
   prayerType: string = "projectsSwitch";
   loaded: boolean = false;
+  network: string = "up";
 
 
   constructor(public nav: NavController, public navParams: NavParams, private http: Http, public loading: LoadingController) {
@@ -46,6 +47,7 @@ export class PrayerRequestsPage {
         }, error => {
           setTimeout( () => {
             loader.dismiss().then();
+            this.network = "down";
             this.nav.push(NetworkDownPage);
           }, 5000);
         });

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { Http } from '@angular/http';
 
@@ -38,7 +38,8 @@ export class UpdateContactPage {
   }
   logForm(){
     let contact: Array<string> = ["Name:", this.name, "Email:", this.email, "Address:", this.address,
-    "City:", this.city, "State:", this.state, "Zip Code:", this.zip, "Phone:", this.phone, "Comments:", this.comments];
+    "City:", this.city, "State:", this.state, "Zip Code:", this.zip, "Phone:", this.phone, "Comments:", this.comments,
+    "Attendance Type", this.attendanceType];
     console.log(contact);
     this.validateAndSubmit(contact);
 

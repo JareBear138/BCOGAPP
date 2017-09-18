@@ -6,6 +6,7 @@ import { NavController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 
 import {NetworkDownPage} from "../network-down/network-down";
+import { ToastController } from 'ionic-angular';
 /**
  * Generated class for the AudioPage page.
  *
@@ -22,12 +23,17 @@ export class AudioPage {
   items: any;
   page: any;
   eopFlag: boolean = false;
+  network: string = "up";
 
-  constructor( private http: Http,  private nav: NavController, public loading: LoadingController) {
+  constructor(  private toastCtrl: ToastController,
+               private http: Http,  private nav: NavController, public loading: LoadingController) {
 
   }
+
+
+
   ionViewDidLoad() {
-    let loader = this.loading.create({content: 'Loading Audio Sermons...', showBackdrop: false});
+    let loader = this.loading.create({content: 'Loading Sermons', showBackdrop: false});
     loader.present().then(() => {
       this.page = 1;
       this.http.get(this.url)
@@ -39,6 +45,7 @@ export class AudioPage {
         }, error => {
           setTimeout( () => {
             loader.dismiss().then();
+            this.network = "down";
             this.nav.push(NetworkDownPage);
           }, 5000);
         });
@@ -62,8 +69,17 @@ export class AudioPage {
       .map(res => res.json())
       .subscribe(data => {
         this.items = data;
-        console.log("API CALL SUCCESS");
+
         refresher.complete();
+        this.network = "up";
+      }, error => {
+        let toast = this.toastCtrl.create({
+        message: 'Couldn\'t refresh feed - No Connection',
+        duration: 3000,
+        position: 'bottom'
+      });
+      toast.present();
+
       });
     //console.log(this.itemsPin);
   }

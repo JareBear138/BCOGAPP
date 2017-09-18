@@ -33,6 +33,7 @@ export class SignUpPage {
   msg: any;
   notes: any;
   name: any;
+  network: string = "up";
 
   constructor(private alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams,
               private http: Http, private nav: NavController, private loading: LoadingController,
@@ -61,6 +62,7 @@ export class SignUpPage {
         }, () => {
           setTimeout( () => {
             loader.dismiss().then();
+            this.network = "down";
             this.nav.push(NetworkDownPage);
           }, 5000);
         });
@@ -100,8 +102,8 @@ export class SignUpPage {
         this.presentAlertSimple("Please Enter a Valid Email!", "Attention");
       }else {
         if (emptyFlag > 0) {
-          var msg = "Are you sure you wish to submit your answers? " +
-            "you left " + emptyFlag + " answer(s) blank!";
+          var msg = "Are you sure you don't want to sign up for the other events? " +
+            emptyFlag + " more event(s) available!";
           let alert = this.alertCtrl.create({
             title: 'Blank Answer(s)',
             subTitle: msg,
@@ -112,7 +114,7 @@ export class SignUpPage {
                 handler: () => { return; }
               },
               {
-                text: "Submit Anyway",
+                text: "No Thanks",
                 handler: () => {
                   this.finalSubmit();
                 }
@@ -176,7 +178,7 @@ export class SignUpPage {
     let alert = this.alertCtrl.create({
       title: $title,
       subTitle: $msg,
-      buttons: ['Got it']
+      buttons: ['Okay']
     });
     alert.present();
   }

@@ -10,8 +10,10 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Rx';
 import {NetworkDownPage} from "../network-down/network-down";
 
-import { PopoverController } from 'ionic-angular';
+import { ModalController } from 'ionic-angular';
 import { PopoverinfoPage } from '../popoverinfo/popoverinfo';
+
+import { ToastController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -20,7 +22,7 @@ import { PopoverinfoPage } from '../popoverinfo/popoverinfo';
 @Injectable()
 export class HomePage {
 
-  url: string = 'https://busticog.org/wp-json/wp/v2/posts?categories=3&per_page=5&_embed';
+  url: string = 'https://busticog.org/wp-json/wp/v2/posts?categories=46&per_page=5&_embed';
   items: any;
   page: any;
   itemsPin: any;
@@ -31,7 +33,7 @@ export class HomePage {
   refFlag: any = {refFlag: "frontPage"};
   network: string = "up";
 
-  constructor(public popoverCtrl: PopoverController, private http: Http,  private nav: NavController, public loading: LoadingController) {
+  constructor(private toastCtrl: ToastController, public popoverCtrl: ModalController, private http: Http,  private nav: NavController, public loading: LoadingController) {
 
   }
 
@@ -76,12 +78,11 @@ export class HomePage {
     **/
   }
 
+
   presentPopover( myEvent ) {
 
-    let popover = this.popoverCtrl.create(PopoverinfoPage, this.refFlag );
-    popover.present({
-      ev: myEvent
-    });
+    let popover = this.popoverCtrl.create(PopoverinfoPage, this.refFlag);
+    popover.present();
   }
 
   /**
@@ -122,6 +123,13 @@ export class HomePage {
         refresher.complete();
 
         //console.log(this.itemsPin);
+      }, error => {
+        let toast = this.toastCtrl.create({
+          message: 'Couldn\'t refresh feed - No Connection',
+          duration: 3000,
+          position: 'bottom'
+        });
+        toast.present();
       });
 
 
