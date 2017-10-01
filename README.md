@@ -1,5 +1,5 @@
 A hybrid app for Busti Church of God located in Busti, NY. This app is built with Ionic 2 and is
-published in the Apple App Store, and  [Google Play Store](https://play.google.com/store/apps/details?id=io.ionic.busticog&hl=en). 
+published in the [Apple App Store](https://itunes.apple.com/us/app/busti-cog/id1276877759?mt=8&ign-mpt=uo%3D4), and  [Google Play Store](https://play.google.com/store/apps/details?id=io.ionic.busticog&hl=en). 
 
 # Current Released Version: 1.0 - Barnabas
 
