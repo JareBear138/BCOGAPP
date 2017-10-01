@@ -1,26 +1,18 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+A hybrid app for Busti Church of God located in Busti, NY. This app is built with Ionic 2 and is
+published in the Apple App Store, and  [Google Play Store](https://play.google.com/store/apps/details?id=io.ionic.busticog&hl=en). 
 
-## How to use this template
+# Current Released Version: 1.0 - Barnabas
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+## Next Version Release: 1.1
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
+## BCOGAPP Road Map
 
-### With the Ionic CLI:
+* Add Dates to Sermons - (Planned Support 1.1)
+* Add Sermon support to iOS - (Planned Support unknown)
+* Add ability for users to save Name and Email - (Planned Support 1.1)
+and auto-fill the values in all forms
+* Improve and unify types of UI after form submission (some forms use Toasts after submission, 
+others use the native alert function) - (Planned Support 1.1)
 
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
 
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start mySideMenu sidemenu
-```
-
-Then, to run it, cd into `mySideMenu` and run:
-
-```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
-```
-
-Substitute ios for android if not on a Mac.
 
